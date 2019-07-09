@@ -1,0 +1,111 @@
+<div class="container">
+    <h1>Edit Product</h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <form (ngSubmit)="updateProduct(product._id)" #productForm="ngForm">
+                <div class="form-group">
+                    <label for="name">SKU</label>
+                    <input type="number" class="form-control" [(ngModel)]="product.sku" name="sku" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Title</label>
+                    <input type="text" class="form-control" [(ngModel)]="product.title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Maker</label>
+                    <input type="text" class="form-control" [(ngModel)]="product.maker" name="maker" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Description</label>
+                    <input type="text" class="form-control" [(ngModel)]="product.description" name="description" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">MSRP</label>
+                    <input type="number" class="form-control" [(ngModel)]="product.msrp" name="msrp" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">PRICE</label>
+                    <input type="number" class="form-control" [(ngModel)]="product.price" name="price" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">IMAGE URL</label>
+                    <input type="text" class="form-control" [(ngModel)]="product.image" name="image" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">Update</button>
+                    <button [routerLink]="['/']" class="btn btn-warning">Back to Main</button>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="col-md-6">
+            <h1>{{ product.title }}</h1>
+
+            <div class="col-md-6">
+                <img [src]="product.image" alt="..." class="img-rounded img-responsive">
+            </div>
+            <div class="col-md-6">
+                <div class="col-sm-12">
+                    <h1>Your Price:</h1>
+                    <h2>{{ product.price }}</h2>
+
+                </div>
+                <div class="col-sm-12">
+                    <h4>Retail Price:</h4>
+                    <h5>{{ product.msrp }}</h5>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Description</div>
+                    <div class="panel-body">
+                        <p>
+                            {{ product.description }}
+                        </p>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>SKU</th>
+                                <th>Maker</th>
+                                <th>Update Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    {{ product.sku }}
+                                </td>
+                                <td>{{ product.maker }}</td>
+                                <td>{{ product.updated_date | date:'short' }}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="col-md-12">
+                    <hr>
+                </div>
+                <div class="col-md-12">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Admin Tools:</h3>
+                        </div>
+                        <div class="panel-body">
+                            <button class="btn btn-danger" type="button" (click)="deleteProduct(product._id)">DELETE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="container">
+    <a [routerLink]="['/']" class="">BACK TO MAIN</a>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{ product.title }}</h1>
+
+            <div class="col-md-6">
+                <img [src]="product.image" alt="..." class="img-rounded img-responsive">
+            </div>
+            <div class="col-md-6">
+                <div class="col-sm-12">
+                    <h1>Your Price:</h1>
+                    <h2>{{ product.price }}</h2>
+
+                </div>
+                <div class="col-sm-12">
+                    <h4>Retail Price:</h4>
+                    <h5>{{ product.msrp }}</h5>
+
+                </div>
+
+            </div>
+            <div class="col-md-12">
+                <hr>
+            </div>
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Description</div>
+                    <div class="panel-body">
+                        <p>
+                            {{ product.description }}
+                        </p>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>SKU</th>
+                                <th>Maker</th>
+                                <th>Update Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    {{ product.sku }}
+                                </td>
+                                <td>{{ product.maker }}</td>
+                                <td>{{ product.updated_date | date:'short' }}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <hr>
+            </div>
+            <div class="col-md-12">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Admin Tools:</h3>
+                    </div>
+                    <div class="panel-body">
+                        <a [routerLink]="['/product-edit', product._id]" class="btn btn-success">EDIT</a>
+                        <button class="btn btn-danger" type="button" (click)="deleteProduct(product._id)">DELETE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
